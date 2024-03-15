@@ -1,0 +1,15 @@
+bp 0x7FF6A8175B20   // 设置断点，将 <address> 替换为你要设置断点的地址
+run
+// 设置循环计数器
+var counter$,0
+
+RunAndWait:
+if ($eax == 0x12345678)
+{
+    jmp RunAndWait
+    log {r14d}
+    counter$ = counter$ + 1
+}
+
+
+quit

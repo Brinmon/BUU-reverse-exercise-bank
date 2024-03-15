@@ -1,0 +1,18 @@
+<question>一道普通的逆向题
+<id>DBAPP-LAB-REVERSE-20200829
+<title>babyre
+<score>300
+<level>困难
+<global>1
+<qatype>REVERSE
+<tags>最后一步需要猜测加密前的密文
+<anstype>实操
+<answer>th1s_gam3_1s_s0_c00l_and_d
+<prompt>1. 解smc
+<prompt>2. 解aes的key(des解密)
+<prompt>3. 解aes密文和异或
+<ansattachfile>RE解题思路/babyre的解题思路.pdf
+<ansattachname>"babyre"的解题思路
+<attachfile>RE附件/babyre的附件.zip
+<attachname>"babyre"的题目附件
+

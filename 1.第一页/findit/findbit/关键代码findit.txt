@@ -1,0 +1,43 @@
+public void onClick(View v) {
+    char[] x = new char[17];
+    char[] y = new char[38];
+    for(int i = 0; i < 17; ++i) {
+        if(thisf[i] < 73 
+		&& thisf[i] >= 65 
+		|| thisf[i] < 105 
+		&& thisf[i] >= 97) {
+            x[i] = (char)(thisf[i] + 18);
+        }
+        else if(thisf[i] >= 65 
+		&& thisf[i] <= 90 
+		|| thisf[i] >= 97 
+		&& thisf[i] <= 0x7A) {
+            x[i] = (char)(thisf[i] - 8);
+        }
+        else {
+            x[i] = thisf[i];
+        }
+    }
+
+    if(String.valueOf(x).equals(edit.getText().toString())) {
+        for(int v1 = 0; v1 < 38; ++v1) {
+            if(pvkq[v1] >= 'A' 
+			&& pvkq[v1] <= 'Z' 
+			|| pvkq[v1] >= 'a' 
+			&& pvkq[v1] <= 'z') {
+                y[v1] = (char)(pvkq[v1] + 16);
+                if(y[v1] > 'Z' && y[v1] < 'a' || y[v1] >= 'z') {
+                    y[v1] = (char)(y[v1] - 26);
+                }
+            }
+            else {
+                y[v1] = pvkq[v1];
+            }
+        }
+
+        text.setText(String.valueOf(y));
+        return;
+    }
+
+    text.setText("答案错了肿么办。。。不给你又不好意思。。。哎呀好纠结啊~~~");
+}

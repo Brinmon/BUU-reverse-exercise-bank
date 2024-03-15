@@ -1,0 +1,817 @@
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x0
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn  # flag[0]
+pop     rax retn
+flag
+pop     rsi retn
+0x2
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn # flag[2]
+pop     rax retn
+flag
+pop     rdx retn
+0x4
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn # flag[4]
+xor     rax, rax retn #清空rax
+add     rax, rdi retn  #rax + flag[0]
+add     rax, rsi retn  #rax + flag[2]
+add     rax, rdx retn  #rax + flag[4]
+pop     rdi retn
+0x64
+sub     rax, rdi retn # rax - 0x64
+mov     rdi, rax retn #目标让rdi为208
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x6
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x8
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0xa
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+add     rax, rdx retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0xc
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0xe
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0x10
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+add     rax, rdx retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x12
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x1
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0x1e
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+sub     rax, rdx retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x3
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x16
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0x3
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+add     rax, rdx retn
+pop     rdi retn
+0x64
+sub     rax, rdi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x5
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x1d
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0x1c
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+pop     rax retn
+flag
+pop     rcx retn
+0x7
+add     rax, rcx retn
+mov     rcx, rax retn
+movzx   rcx, byte ptr [rcx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+add     rax, rdx retn
+sub     rax, rcx retn
+pop     rdi retn
+0x64
+sub     rax, rdi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x9
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x11
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0xb
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+sub     rax, rdx retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x13
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x1b
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+mov     rcx, rax retn
+pop     rax retn
+flag
+pop     rdi retn
+0xd
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0xf
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0x14
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+add     rax, rdx retn
+sub     rax, rcx retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x15
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x17
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0x17
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+add     rax, rdx retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x19
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x1a
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1e
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x9
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x8
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x2
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x3
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x4
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x5
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x6
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x7
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0xb
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x0
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1d
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1d
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1d
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0xd
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+sub     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1c
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0xe
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+sub     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1c
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0xf
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x0
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x1b
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+sub     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x17
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x18
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+sub     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x1a
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x0
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+pop     rax retn
+flag
+pop     rdx retn
+0x1
+add     rax, rdx retn
+mov     rdx, rax retn
+movzx   rdx, byte ptr [rdx] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+sub     rax, rdx retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x13
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0xb
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0xc
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+add     rax, rsi retn
+mov     rdi, rax retn
+call    _exit
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+======================================
+pop     rax retn
+flag
+pop     rdi retn
+0x15
+add     rax, rdi retn
+mov     rdi, rax retn
+movzx   rdi, byte ptr [rdi] retn
+pop     rax retn
+flag
+pop     rsi retn
+0x14
+add     rax, rsi retn
+mov     rsi, rax retn
+movzx   rsi, byte ptr [rsi] retn
+xor     rax, rax retn
+add     rax, rdi retn
+sub     rax, rsi retn
+mov     rdi, rax retn
+call    _exit

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name="color-scheme" content="light dark">
+  
+  <title>羊城杯 2020-babyre - P.Z&#39;s Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+
+  
+<link rel="stylesheet" href="/css/var.css">
+
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<link rel="stylesheet" href="/css/typography.css">
+
+  
+<link rel="stylesheet" href="/css/code-highlighting.css">
+
+  
+<link rel="stylesheet" href="/css/components.css">
+
+  
+<link rel="stylesheet" href="/css/nav.css">
+
+  
+<link rel="stylesheet" href="/css/paginator.css">
+
+  
+<link rel="stylesheet" href="/css/footer.css">
+
+  
+<link rel="stylesheet" href="/css/post-list.css">
+
+  
+<link rel="stylesheet" href="/css/waline.css">
+
+  
+  
+  
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  
+   
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<!-- //unpkg.com/@waline/client -->
+<!--  -->
+    <body data-color-scheme="auto">
+        <nav id="theme-nav">
+    <div class="inner">
+        <a class="title" href="/">P.Z&#39;s Blog</a>
+        <div class="nav-arrow"></div>
+        <div class="nav-items">
+            <a class="nav-item nav-item-home" href="/">Home</a>
+            
+            
+            <a class="nav-item" href="/Diary/Diary">Diary</a>
+            
+            
+            
+            <a class="nav-item" href="/Friends/Friends">Friends</a>
+            
+            
+            
+            <a class="nav-item" href="/CTF/CTF">CTF</a>
+            
+            
+            
+            <a class="nav-item" href="/Book/Book">Book</a>
+            
+            
+            
+            <a class="nav-item" href="/Sundry/Sundry">Sundry</a>
+            
+            
+            
+            <a class="nav-item nav-item-github nav-item-icon" href="https://github.com/PoZeep" target="_blank">&nbsp;</a>
+            
+            
+            
+            <a class="nav-item nav-item-patreon nav-item-icon" href="https://space.bilibili.com/39892350" target="_blank">&nbsp;</a>
+            
+            
+        </div>
+    </div>
+</nav>
+        <article class="post">
+    <div class="meta">
+        
+        <div class="date" id="date">
+            
+            <span>January</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <span>18,</span>
+            <span>2022</span>
+        </div>
+        
+
+        <h2 class="title">羊城杯 2020-babyre</h2>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="content">
+        <h1 id="0x00-日常查壳"><a href="#0x00-日常查壳" class="headerlink" title="0x00 日常查壳"></a>0x00 日常查壳</h1><p>无壳64位</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220118200622606.png" alt="image-20220118200622606"></p>
+<h1 id="0x01-分析main函数"><a href="#0x01-分析main函数" class="headerlink" title="0x01 分析main函数"></a>0x01 分析main函数</h1><p>找到主函数，发现是openssl库的DES加密，然后开头一段DES加密，密钥和密文已经给了</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220118200831539.png" alt="image-20220118200831539"></p>
+<p>通过动调查看初始化的密钥</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220118201010738.png" alt="image-20220118201010738"></p>
+<p>记录下网卡又出127.0.0.1</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220118201213500.png" alt="image-20220118201213500"></p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_18624493/article/details/122297400">https://blog.csdn.net/baidu_18624493/article/details/122297400</a></p>
+<p>接着报错，ubuntu18.04后已经不支持这个库了，于是我换了18.04解决了这个问题</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220120100857133.png" alt="image-20220120100857133"></p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1173587/e-package-libssl1-0-0-has-no-installation-candidate">https://askubuntu.com/questions/1173587/e-package-libssl1-0-0-has-no-installation-candidate</a></p>
+<p>动调运行到这，查看内存得到初始化后的密钥</p>
+<p>PS: v5的数据没必要，开始在那bangzhu了一会</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220118201340863.png" alt="image-20220118201340863"></p>
+<p>得到密钥</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES, AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># key = b&#x27;\xBC\x9C\x10\xE0\xC2\x84\x84\x4D&#x27;</span></span><br><span class="line">key = <span class="string">b&#x27;\xAD\x52\xF2\x4C\xE3\x2C\x20\xD6&#x27;</span></span><br><span class="line">iv = <span class="string">b&#x27;\x00\x00\x00\x00\x00\x00\x00\x00&#x27;</span></span><br><span class="line">c = long_to_bytes(<span class="number">0xAF4EEC8428A9BDBA2266FEEEEE0D8A2</span>)</span><br><span class="line">lun = DES.new(key = key, mode = DES.MODE_CBC, iv = iv)</span><br><span class="line"></span><br><span class="line">key = lun.decrypt(c)</span><br><span class="line"><span class="built_in">print</span>(key)</span><br><span class="line"><span class="comment">#b&#x27;th1s1sth3n1c3k3y&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="0x02-分析SMC后的函数"><a href="#0x02-分析SMC后的函数" class="headerlink" title="0x02 分析SMC后的函数"></a>0x02 分析SMC后的函数</h1><p>就是我们又输入一段，然后经过AES加密，两段异或的加密，最后比较（比较那段ida抽风了，去汇编上看即可）</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220118202530412.png" alt="image-20220118202530412"></p>
+<p>动调得到密文</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220118203157196.png" alt="image-20220118203157196"></p>
+<p>于是来理一下第二段输入</p>
+<ol>
+<li>AES加密</li>
+<li>一段异或加密（解密倒着来即可）</li>
+<li>一段异或加密（已知最后一位）</li>
+</ol>
+<h1 id="0x03-GetFlag"><a href="#0x03-GetFlag" class="headerlink" title="0x03 GetFlag!"></a>0x03 GetFlag!</h1><p>最后一段异或加密我们结果是分叉的，也就是有多解的情况，所以我们要穷举所有结果，于是就要写个DFS（深度优先搜索）即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES, AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># key = b&#x27;\xBC\x9C\x10\xE0\xC2\x84\x84\x4D&#x27;</span></span><br><span class="line">key = <span class="string">b&#x27;\xAD\x52\xF2\x4C\xE3\x2C\x20\xD6&#x27;</span></span><br><span class="line">iv = <span class="string">b&#x27;\x00\x00\x00\x00\x00\x00\x00\x00&#x27;</span></span><br><span class="line">c = long_to_bytes(<span class="number">0xAF4EEC8428A9BDBA2266FEEEEE0D8A2</span>)</span><br><span class="line">lun = DES.new(key = key, mode = DES.MODE_CBC, iv = iv)</span><br><span class="line"></span><br><span class="line">key = lun.decrypt(c)</span><br><span class="line"><span class="built_in">print</span>(key)</span><br><span class="line"><span class="comment">#b&#x27;th1s1sth3n1c3k3y&#x27;</span></span><br><span class="line"></span><br><span class="line">ef = <span class="string">&quot;BDADB4841063B3E1C6842D6FBA8874C49032EA2EC6286570C97578A00B9FA6&quot;</span></span><br><span class="line">ef = <span class="built_in">bytearray</span>.fromhex(ef)                                                                  <span class="comment">#变成16进制的字节数组</span></span><br><span class="line"></span><br><span class="line">flag = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>)]</span><br><span class="line">flag[<span class="number">31</span>] = <span class="number">0xC4</span></span><br><span class="line">flags = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其实就是异或存在多解 于是在0xFF中如有能恢复第一个字符的 就都整条恢复</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Deep_Search</span>(<span class="params">flag, deep</span>):</span></span><br><span class="line">    <span class="keyword">if</span> deep == <span class="number">0</span>:</span><br><span class="line">        flags.append(flag.copy())</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0xFF</span>):</span><br><span class="line">            <span class="keyword">if</span> ((<span class="number">2</span> * (i ^ <span class="number">0x13</span>) + <span class="number">7</span>) ^ (i % <span class="number">9</span> + flag[deep] + <span class="number">2</span>)) &amp; <span class="number">0xFF</span> == ef[deep - <span class="number">1</span>]:    <span class="comment">#恢复第一个异或</span></span><br><span class="line">                flag[deep - <span class="number">1</span>] = i                                                          <span class="comment">#赋值到flag</span></span><br><span class="line">                Deep_Search(flag, deep - <span class="number">1</span>)                                                 <span class="comment">#整条递归恢复</span></span><br><span class="line"></span><br><span class="line">Deep_Search(flag, <span class="number">31</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> flag <span class="keyword">in</span> flags:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">31</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">int</span>(i / <span class="number">4</span>) - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="comment"># for j in range(int(i / 4)):               两种都可以</span></span><br><span class="line">            <span class="comment"># print(j, end = &quot; &quot;)</span></span><br><span class="line">            flag[i] ^= flag[j]</span><br><span class="line">    t = AES.new(key, AES.MODE_ECB).decrypt(<span class="built_in">bytes</span>(flag))</span><br><span class="line">    <span class="built_in">print</span>(t)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当一个数异或多个数时 如 a ^ b ^ c ^ d = e </span></span><br><span class="line"><span class="comment"># 那么当他要反过来推回来 不管是正着异或 e ^ b ^ c ^ d 还是倒过来 e ^ d ^ c ^ b 答案都为 a</span></span><br></pre></td></tr></table></figure>
+
+<p>GetFlag!(buuoj上MD5加密后上交)</p>
+<p><img src="/2022/01/18/%E7%BE%8A%E5%9F%8E%E6%9D%AF-2020-babyre/image-20220120100425547.png" alt="image-20220120100425547"></p>
+<h1 id="关于DFS扩展"><a href="#关于DFS扩展" class="headerlink" title="关于DFS扩展"></a>关于DFS扩展</h1><p>本来想直接塞这篇博客，学习一番，决定单独出一篇放到Book里</p>
+
+    </div>
+    
+    <div id = "frozen-btn" class = "center">
+    <!-- <button class="green" onclick = "Change()">🎉☕一杯咖啡~</button> -->
+    <button class="purple" onclick = "Change()">🍰</button>
+    </div>
+    
+    <div class = "hide" id = "img">
+        <div class="post-list">
+            <article class="post-list-item">
+                <div class="content">
+                    <img src="/img/Coffee/AliPay.png" alt="DASCTF X SU">
+                    <div class="center">
+                        🍬
+                    </div>
+                </div>
+            </article>
+            <article class="post-list-item">
+                <div class="content">
+                    <img src="/img/Coffee/WeChat.png" alt="HFCTF2022">
+                    <div class="center">
+                        🍪
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <script>
+            function Change()
+            {
+                var img = document.getElementById("img");
+                if(img.className == "hide")
+                {
+                    img.className="";
+                }
+                else
+                {
+                    img.className="hide";
+                }
+            }
+    </script>
+
+    <div class="about">
+        <h1>About this Post</h1>
+        <p>This post is written by P.Z, licensed under <a
+                target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0">CC BY-NC 4.0</a>.</p>
+    </div>
+    <!-- 
+        
+     -->
+<div class="container">
+
+</article>
+        <footer>
+    <div class="inner">
+        <div class="links">
+            
+            <div class="group">
+                <h4 class="title">Blog</h4>
+                
+                <a href="/" class="item">Home</a>
+                
+                <a href="/Diary/Diary.html" class="item">Diary</a>
+                
+                <a href="/Friends/Friends.html" class="item">Friends</a>
+                
+                <a href="/CTF/CTF.html" class="item">CTF</a>
+                
+                <a href="/Book/Book.html" class="item">Book</a>
+                
+            </div>
+            
+            <div class="group">
+                <h4 class="title">Me</h4>
+                
+                <a target="_blank" rel="noopener" href="https://github.com/PoZeep" class="item">GitHub</a>
+                
+                <a target="_blank" rel="noopener" href="https://space.bilibili.com/39892350" class="item">BiliBili</a>
+                
+            </div>
+            
+        </div>
+        <span>&copy; 2024 P.Z<br >Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></span>
+        
+            <br>
+            <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
+                <label>
+                    <input type="radio" value="light">
+                    <span>Light</span>
+                </label>
+                <label>
+                    <input type="radio" value="dark">
+                    <span>Dark</span>
+                </label>
+                <label>
+                    <input type="radio" value="auto">
+                    <span>Auto</span>
+                </label>
+            </div>
+        
+        
+    <span id="sitetime" style="text-align: center;display:block;"></span>
+
+
+</footer>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2021, 12, 27, 12, 00, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "我已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了*/
+    siteTime();
+</script>
+
+<!-- 在线通讯Tidio -->
+
+<script src="//code.tidio.co/zmdcv08a6racnaer2so7xybdwby41fsa.js"></script>
+
+
+
+        
+<script src="/js/main.js"></script>
+
+        
+    </body>
+</html>
